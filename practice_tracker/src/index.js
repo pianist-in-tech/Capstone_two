@@ -1,22 +1,24 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client'; // Use createRoot
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
-const CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
+// Get the root DOM element where your React app will be mounted
+const rootElement = document.getElementById('root');
 
-ReactDOM.render(
-      <React.StrictMode>
-      <GoogleOAuthProvider clientId={CLIENT_ID}>
-      <App />
+// Create a React root instance
+const root = createRoot(rootElement); // Initialize the React root
+
+// Render your application with the updated React 18 approach
+root.render(
+  <React.StrictMode>
+    <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
+      <App /> {/* Your main App component */}
     </GoogleOAuthProvider>
-      </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+// Performance measurement (optional)
 reportWebVitals();

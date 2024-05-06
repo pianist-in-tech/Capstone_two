@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios'; // Axios for HTTP requests
 
-const PracticeTracker = () => {
+const PracticeSuggestions = () => {
   const [response, setResponse] = useState(null);
 
   const topics = [
@@ -21,7 +21,7 @@ const PracticeTracker = () => {
 
   const handleClick = async (prompt) => {
     try {
-      const result = await axios.post('http://localhost:3001/get-response', { prompt });
+      const result = await axios.post('http://localhost:3001/ai-endpoint/get-response', { prompt });
       setResponse(result.data); // Store OpenAI response in state
     } catch (error) {
       console.error('Error fetching OpenAI response:', error);
@@ -30,7 +30,7 @@ const PracticeTracker = () => {
 
   return (
     <div>
-      <h1>Practice Tracker</h1>
+      <h1>Practice Suggestions</h1>
       <ul>
         {topics.map((topic, index) => (
           <li key={index}>
@@ -51,4 +51,4 @@ const PracticeTracker = () => {
   );
 };
 
-export default PracticeTracker;
+export default PracticeSuggestions;

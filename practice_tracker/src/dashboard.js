@@ -9,6 +9,9 @@ const Dashboard = () => {
     const [instrument, setInstrument] = useState('');
     const [proficiency, setProficiency] = useState('');
     const history = useNavigate(); // To manage client-side routing
+    // Default to localhost:3001 if REACT_APP_BACKEND_URL is not set
+    const BASE_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3001';
+
   
     // Handle form submission
     const handleSubmit = async (e) => {
@@ -24,7 +27,7 @@ const Dashboard = () => {
   
       try {
         // Send user information to the backend
-        const response = await fetch('/api/user-info', {
+        const response = await fetch(`${BASE_URL}/api/user-info`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

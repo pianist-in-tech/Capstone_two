@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import HomePage from '../home'; 
 import Dashboard from '../dashboard';
-import Practice_Tracker from '../practice_tracker';
+import Practice_page from '../practice_page';
 //import PrivateRoute from './privateRoute';
 import { AuthContext } from '../auth/authContext'; // Your context for authentication
 
@@ -21,7 +21,7 @@ const AppRoutes = () => {
         // element={<PrivateRoute isAuthenticated={isAuthenticated} />} // Apply PrivateRoute logic
         >
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/practice-tracker" element={<Practice_Tracker />} />
+          <Route path="/practice_page" element={<Practice_page />} />
         </Route>
 
         {/* Fallback route to redirect to the home/sign-in page */}
